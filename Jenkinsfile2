@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    environment {
+        CONFIG_FILE = 'config.json'
+    }
+
+    stages {
+        stage('Sync Failover to Active') {
+            steps {
+                script {
+                    // Load the configuration file
+                    def config = readJSON file: "${CONFIG_FILE}"
+                    
+                    // Iterate over the buckets and sync failover to active
+                    config.s3.each { bucket ->
+                        def activeBucket = bucket.active
+                        def failoverBucket = bucket.failover
+                        
+                        echo "Syncing Failover Bucket: ${failoverBucket} to Active Bucket: ${activeBucket}"
+                        
+                        // Run AWS CLI command to sync failover to active
+                        sh "aws s3 sync s3://${failoverBucket} s3://${activeBucket}"
+                    }
+                }
+            }
+        }
+    }
+    
+    triggers {
+        cron('H 12 * * *')  // Schedule this to run daily at noon
+    }
+}
