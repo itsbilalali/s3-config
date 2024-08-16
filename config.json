@@ -1,0 +1,12 @@
+{
+    "s3": [
+        {
+            "active": "bucket-name-1",
+            "failover": "bucket-name-2"
+        },
+        {
+            "active": "bucket-name-3",
+            "failover": "bucket-name-4"
+        }
+    ]
+}
