@@ -26,5 +26,8 @@ pipeline {
         }
     }
     
+    triggers {
+        cron('H 12 * * *')  // Schedule this to run daily at noon
+    }
 
 }
