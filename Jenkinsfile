@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        CONFIG_FILE = 'config.json'
+        CONFIG_FILE = 'config2.json'
     }
 
     stages {
