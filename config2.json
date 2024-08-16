@@ -2,11 +2,11 @@
     "s3": [
         {
             "active": "bucket1klj",
-            "failover": "bucket1klj"
+            "failover": "bucket2asdfg"
         },
         {
             "active": "bucket1klj",
-            "failover": "bucket1klj"
+            "failover": "bucket3asdfg"
         }
     ]
 }
