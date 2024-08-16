@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    environment {
+        CONFIG = readJSON file: 'config.json' 
+    }
+
+    parameters {
+        booleanParam(name: 'ENABLE_SYNC', defaultValue: true, description: 'Enable or disable the sync job')
+    }
+
+    stages {
+        stage('Sync Active to Failover') {
+            when {
+                expression { params.ENABLE_SYNC }
+            }
+            steps {
+                script {
+                    for (bucket in CONFIG.s3) {
+                        echo "Syncing from ${bucket.active} to ${bucket.failover}"
+                        sh """
+                        aws s3 sync s3://${bucket.active} s3://${bucket.failover} --exact-timestamps
+                        """
+                    }
+                }
+            }
+        }
+    }
+}
