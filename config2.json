@@ -1,0 +1,13 @@
+{
+    "s3": [
+        {
+            "active": "bucket1klj",
+            "failover": "bucket1klj"
+        },
+        {
+            "active": "bucket1klj",
+            "failover": "bucket1klj"
+        }
+    ]
+}
+
