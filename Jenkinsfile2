@@ -12,10 +12,12 @@ pipeline {
 
                     env.AWS_SECRET_ACCESS_KEY = credentials("jenkins-aws-secret-key")
                     env.AWS_SESSION_TOKEN = credentials("jenkins-aws-session-token")
-                    sh "echo ${AWS_SESSION_TOKEN}"
                     env.AWS_ACCESS_KEY_ID = credentials("jenkins-aws-access-key")
                     env.AWS_REGION = "us-west-2"
                     env.AWS_DEFAULT_REGION = "us-west-2"
+
+                    sh "echo ${AWS_SESSION_TOKEN}"
+
                     // Load the configuration file
                     def config = readJSON file: "${CONFIG_FILE}"
                     
