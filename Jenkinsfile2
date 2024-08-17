@@ -9,6 +9,8 @@ pipeline {
         stage('Sync Failover to Active') {
             steps {
                 script {
+
+                    env.AWS_ACCESS_KEY_ID = credentials("jenkins-aws-secret-key-id")
                     // Load the configuration file
                     def config = readJSON file: "${CONFIG_FILE}"
                     
