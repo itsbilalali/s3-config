@@ -10,7 +10,9 @@ pipeline {
             steps {
                 script {
 
-                    env.AWS_ACCESS_KEY_ID = credentials("jenkins-aws-secret-key-id")
+                    env.AWS_SECRET_ACCESS_KEY = credentials("jenkins-aws-secret-key")
+                    env.AWS_SESSION_TOKEN = credentials("jenkins-aws-session-token")
+                    env.AWS_ACCESS_KEY_ID = credentials("jenkins-aws-access-key")
                     // Load the configuration file
                     def config = readJSON file: "${CONFIG_FILE}"
                     
