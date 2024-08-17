@@ -15,6 +15,7 @@ pipeline {
                     env.AWS_ACCESS_KEY_ID = credentials("jenkins-aws-access-key")
                     env.AWS_REGION = "us-west-2"
                     env.AWS_DEFAULT_REGION = "us-west-2"
+                    sh 'echo $AWS_ACCESS_KEY_ID'
 
 
                     // Load the configuration file
