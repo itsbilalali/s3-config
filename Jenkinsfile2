@@ -6,9 +6,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials("jenkins-aws-secret-key")
         AWS_SESSION_TOKEN = credentials("jenkins-aws-session-token")
         AWS_ACCESS_KEY_ID = credentials("jenkins-aws-access-key")
-        AWS_REGION = "us-west-2"
-        AWS_DEFAULT_REGION = "us-west-2"
-
     }
 
     stages {
