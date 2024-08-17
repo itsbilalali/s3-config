@@ -3,6 +3,12 @@ pipeline {
 
     environment {
         CONFIG_FILE = 'config.json'
+        AWS_SECRET_ACCESS_KEY = credentials("jenkins-aws-secret-key")
+        AWS_SESSION_TOKEN = credentials("jenkins-aws-session-token")
+        AWS_ACCESS_KEY_ID = credentials("jenkins-aws-access-key")
+        AWS_REGION = "us-west-2"
+        AWS_DEFAULT_REGION = "us-west-2"
+
     }
 
     stages {
@@ -10,12 +16,7 @@ pipeline {
             steps {
                 script {
 
-                    env.AWS_SECRET_ACCESS_KEY = credentials("jenkins-aws-secret-key")
-                    env.AWS_SESSION_TOKEN = credentials("jenkins-aws-session-token")
-                    env.AWS_ACCESS_KEY_ID = credentials("jenkins-aws-access-key")
-                    env.AWS_REGION = "us-west-2"
-                    env.AWS_DEFAULT_REGION = "us-west-2"
-                    sh 'echo $AWS_ACCESS_KEY_ID'
+
 
 
                     // Load the configuration file
